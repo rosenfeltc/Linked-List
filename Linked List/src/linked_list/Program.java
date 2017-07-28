@@ -33,10 +33,20 @@ public class Program
 				openFile();
 				break;
 			case 1:
+				scrollPane();
+				break;
 			case 2:
+				addStudent();
+				break;
 			case 3:
+				searchStudent();
+				break;
 			case 4:
+				deleteStudent();
+				break;
 			case 5:
+				System.exit(0);
+				break;
 		}
 	}
 	
@@ -71,5 +81,59 @@ public class Program
 		{
 			e.printStackTrace();
 		}
+		
+		mainMenu();
+	}// END openFile method
+	
+	public static void scrollPane()
+	{
+		Window theWindow = new Window(theList.print());
+		mainMenu();
+	}
+	
+	public static void addStudent()
+	{
+		JOptionPane.showMessageDialog(null,"Let's add a new student!");
+		String name = JOptionPane.showInputDialog("Please provide the student's name: ");
+		String major = JOptionPane.showInputDialog("Please provide the student's major: ");
+		int id =  Integer.parseInt(JOptionPane.showInputDialog("Please provide the student's id: "));
+		
+		theList.add(name, major, id);
+		JOptionPane.showMessageDialog(null, "The student was added to the list!");
+		mainMenu();
+	}
+	
+	public static void searchStudent()
+	{
+		JOptionPane.showMessageDialog(null, "Let's search for a student by last name!");
+		String name = JOptionPane.showInputDialog("Please provide the student's last name: ");
+		
+			if(theList.search(name))
+			{
+				JOptionPane.showMessageDialog(null, "The studen by the last name " + name + " was found in the list!");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "The studen by the last name " + name + " was not found in the list!");
+			}
+			
+			mainMenu();
+	}
+	
+	public static void deleteStudent()
+	{
+		JOptionPane.showMessageDialog(null, "Let's delete a student from the list!");
+		String name = JOptionPane.showInputDialog("Please provide the student's last name that you want to delete: ");
+		
+		if(theList.delete(name))
+		{
+			JOptionPane.showMessageDialog(null, "The student by the last name " + name + " was successfully deleted!");
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Unable to delete the student by the last name " + name +"!");
+		}
+		
+		mainMenu();
 	}
 }

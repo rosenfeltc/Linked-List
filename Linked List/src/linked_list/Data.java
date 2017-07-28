@@ -17,4 +17,14 @@ public class Data
 	{
 		return name;
 	}
+	
+	public String getMajor()
+	{
+		return major;
+	}
+	
+	public int getID()
+	{
+		return id;
+	}
 }
