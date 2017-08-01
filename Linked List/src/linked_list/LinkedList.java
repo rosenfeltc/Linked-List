@@ -56,12 +56,30 @@ public class LinkedList
 			// based on alphabetical order of the where the new Node should go in the list
 			spot = search(newNode);
 			
+			// Special case insertion on a list containing one Node
+			if(spot == getRoot() && spot.getNext() == null)
+			{
+				// We have to check to see if the new student Node should go before or after the only node in the list
+				
+				// New Node goes after the first Node
+				if(name.compareToIgnoreCase(spot.getData().getName()) > 0)
+				{
+					newNode.setPrevious(spot);
+					spot.setNext(newNode);
+				}
+				// New Node goes at the beginning of the list
+				else
+				{
+					setRoot(newNode);
+					newNode.setNext(spot);
+					spot.setPrevious(newNode);
+				}
+			}
 			// Special case insertion at beginning of the list
-			if(spot == getRoot())
+			else if(spot == getRoot())
 			{
 				setRoot(newNode);
 				newNode.setNext(spot);
-				newNode.setPrevious(null);
 				spot.setPrevious(newNode);
 			}
 			// Special case insertion at end of the list
@@ -70,10 +88,10 @@ public class LinkedList
 				// Because search only reaches the last Node of the list (otherwise one spot further would return null
 				// which wouldn't be helpful) then we have to check to see if the new student Node should go before or after
 				// the last Node of the list
+				
 				// New Node goes to the end of the list
-				if(newNode.getData().getName().compareToIgnoreCase(spot.getData().getName()) > 0)
+				if(name.compareToIgnoreCase(spot.getData().getName()) > 0)
 				{
-					newNode.setNext(null);
 					newNode.setPrevious(spot);
 					spot.setNext(newNode);
 				}
@@ -222,7 +240,7 @@ public class LinkedList
 		private Node previous;
 		
 		// Node Constructor that takes the three parameters passed in and uses them to call the Data contructor
-		public Node(String name, String major, int id)
+		private Node(String name, String major, int id)
 		{
 			data = new Data(name, major, id);
 			next = null;
@@ -230,31 +248,31 @@ public class LinkedList
 		}
 		
 		// Getter
-		public Data getData()
+		private Data getData()
 		{
 			return data;
 		}
 		
 		// Getter
-		public Node getNext()
+		private Node getNext()
 		{
 			return next;
 		}
 		
 		// Setter
-		public void setNext(Node next)
+		private void setNext(Node next)
 		{
 			this.next = next;
 		}
 		
 		// Getter
-		public Node getPrevious()
+		private Node getPrevious()
 		{
 			return previous;
 		}
 		
 		// Setter
-		public void setPrevious(Node previous)
+		private void setPrevious(Node previous)
 		{
 			this.previous = previous;
 		}

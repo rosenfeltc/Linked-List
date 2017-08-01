@@ -111,11 +111,21 @@ public class Program
 	public static void addStudent()
 	{
 		JOptionPane.showMessageDialog(null,"Let's add a new student!");
+		// Get last name of the student from the user
 		String name = JOptionPane.showInputDialog("Please provide the student's name: ");
+		// Ensure the proper Capitalization of a Last name
+		name = name.toUpperCase().charAt(0) + name.toLowerCase().substring(1);
+		// Get the abbreviated form of the Student's major
 		String major = JOptionPane.showInputDialog("Please provide the student's major (abbreviated form): ");
+		// Ensure the proper Capitalization of an abbreviated major
+		major = major.toUpperCase();
+		// Get the Student's id
 		int id =  Integer.parseInt(JOptionPane.showInputDialog("Please provide the student's id: "));
 		
+		// Call the add method and pass the parameters just received from the user in order to add the Student to the Linked-List
 		theList.add(name, major, id);
+		
+		// Confirmation message
 		JOptionPane.showMessageDialog(null, "The student, " + name + ", was successfully added to the list!");
 		mainMenu();
 	}
