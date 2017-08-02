@@ -1,7 +1,6 @@
-/* This is the Window class that takes in a String and displays it to the user as a ScrollPane Window
+/* This is the SearchNodeWindow class that takes in a String and displays it to the user as a ScrollPane Window for the Bonus SearchNode class
  * Coded by Christopher Rosenfelt for CSI 213
  */
-
 package linked_list;
 
 import java.awt.BorderLayout;
@@ -14,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
-public class Window extends JFrame
+public class SearchNodeWindow extends JFrame
 {
-	public Window(String content)
+	public SearchNodeWindow(String content)
 	{
 		// Make a text area with the String parameter and added to a ScrollPane
 		JTextArea text = new JTextArea(content);
@@ -36,7 +35,7 @@ public class Window extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				dispose();
-				Program.mainMenu();
+				SearchNode.mainMenu();
 			}
 		});
 		
